@@ -10,8 +10,10 @@ public class GameManagerX : MonoBehaviour
     private const float SpaceBetweenSquares = 2.5f;
     private const float MinValueX = -3.75f; //  x value of the center of the left-most square
     private const float MinValueY = -3.75f; //  y value of the center of the bottom-most square
+    private const int InitialScoreValue = 0;
 
     private int _score;
+    private int _lives;
     private float _spawnRate = 1.5f;
     private float _timeLeft = 60.0f;
 
@@ -19,6 +21,7 @@ public class GameManagerX : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI livesText;
     public GameObject titleScreen;
     public Button restartButton;
     public List<GameObject> targetPrefabs;
@@ -30,8 +33,8 @@ public class GameManagerX : MonoBehaviour
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         _score = 0;
-        UpdateScore(0);
-        UpdateTimer(System.Convert.ToInt32(_timeLeft));
+        this.UpdateScore(InitialScoreValue);
+        this.UpdateTimer(System.Convert.ToInt32(_timeLeft));
         titleScreen.SetActive(false);
     }
 
